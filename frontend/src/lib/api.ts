@@ -1,5 +1,9 @@
 // API base URL — set NEXT_PUBLIC_API_URL in your .env.local (dev) or Vercel env vars (prod)
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+let baseUrl = (process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api").replace(/\/+$/, "");
+if (!baseUrl.endsWith("/api")) {
+  baseUrl = `${baseUrl}/api`;
+}
+const API_URL = baseUrl;
 
 export const api = {
   get: async (endpoint: string) => {
