@@ -1,0 +1,26 @@
+# ===================================
+# Files to NEVER commit to GitHub
+# ===================================
+
+# Environment secrets
+.env
+.env.local
+.env.*.local
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# Local database files
+*.db
+*.sqlite3
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+Thumbs.db
