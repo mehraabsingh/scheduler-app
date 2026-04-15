@@ -12,7 +12,11 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Scheduling Platform API")
 
 # Read FRONTEND_URL from env; allow multiple origins separated by comma
-_frontend_url = os.getenv("FRONTEND_URL", "http://localhost:3000")
+# Default includes both local dev and the deployed Vercel URL
+_frontend_url = os.getenv(
+    "FRONTEND_URL",
+    "http://localhost:3000,https://scheduler-app-flame-pi.vercel.app"
+)
 origins = [o.strip() for o in _frontend_url.split(",")]
 
 app.add_middleware(
